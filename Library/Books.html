@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style type="text/css">
+        @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Petemoss&display=swap");
+
+* {
+    box-sizing: border-box;
+    font-family: "Cinzel", serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+    margin: 0;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+/*    background-color: #d9d9d9;
+*/}
+
+.book {
+    --book-height: 100vh;
+    --book-ratio: 1.4;
+}
+
+.book > div {
+    height: var(--book-height);
+    width: calc(var(--book-height) / var(--book-ratio));
+    overflow: auto;
+    background-color: #0a0a0a;
+    transform: scale(0.9);
+    border-radius: 6px;
+    transform-origin: left;
+    box-shadow: 2px 3px 15px white;
+    
+/*    background-repeat: no-repeat;
+*/
+}
+
+.book-cover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    z-index: 9;
+    text-align: center;
+    background: linear-gradient(135deg, black 25%, transparent 25%) -50px 0,
+        linear-gradient(225deg, black 25%, transparent 25%) -50px 0,
+        linear-gradient(315deg, black 25%, transparent 25%),
+        linear-gradient(45deg, black 25%, transparent 25%);
+    background-size: 2em 2em;
+    background-color: #232323;
+    color: white;
+    transition: transform 2s;
+    background-image: url('Images/merchant.jpg') ;
+    background-size: cover;
+}
+
+.book-cover::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    right: 20px;
+    top: 0;
+    bottom: 0;
+    background-color: #b11509;
+}
+
+h1 {
+    font-family: "Petemoss", cursive;
+    font-size: 98px;
+    font-weight: 300;
+/*    color: #dbd75d;
+*/}
+
+h2 {
+    font-size: 16px;
+    margin-top: 400px;
+    text-shadow: 1px 2px 8px blueviolet;
+}
+
+.separator {
+    --separator-size: 8px;
+    width: var(--separator-size);
+    height: var(--separator-size);
+    background-color: #dbd75d;
+    margin: 50px auto 60px auto;
+    border-radius: 50%;
+    position: relative;
+}
+
+.separator::after,
+.separator::before {
+    content: "";
+    position: absolute;
+    width: 12px;
+    background-color: white;
+    height: 2px;
+    top: calc(50% - 1px);
+}
+
+.separator::after {
+    left: 15px;
+}
+
+.separator::before {
+    right: 15px;
+}
+
+.book-content {
+    transform: scale(0.9) translateY(30px);
+    background-color: white !important;
+    transition: all 0.3s 1s;
+}
+
+.book-content h3,
+.book-content p {
+    opacity: 0;
+    transition: all 0.3s 0.3s;
+}
+
+h3 {
+    padding: 30px;
+}
+
+p {
+    padding: 0px 30px 10px 30px;
+    text-align: justify;
+    font-size: 14px;
+}
+
+.book-cover > div {
+    transition: opacity 0s 0.6s;
+}
+
+.book:hover > .book-cover {
+    transform: rotateY(180deg) scale(0.9);
+}
+
+.book:hover > .book-cover > div {
+    opacity: 0;
+}
+
+.book:hover > .book-content {
+    transform: scale(0.9) translateY(0px);
+}
+
+.book:hover > .book-content h3,
+.book:hover > .book-content p {
+    opacity: 1;
+}
+
+
+
+
+
+/*html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+}*/
+
+.glow-on-hover {
+    width: 220px;
+    height: 50px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+}
+
+.glow-on-hover:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+.glow-on-hover:active {
+    color: #000
+}
+
+.glow-on-hover:active:after {
+    background: transparent;
+}
+
+.glow-on-hover:hover:before {
+    opacity: 1;
+}
+
+.glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+    </style>
+</head>
+<body>
+    <marquee style="color: red;font-size: 30px;">Welcome to the local library &#128218;happy learning &#128218;</marquee>
+    <div style="height: 1000px;width: 100%;background-image: url('Images/back.jpg');">
+        <main>
+    <div class="book">
+        <div class="book-cover">
+            <div>
+               <!--  <h1 style="color: goldenrod;text-shadow: 1px 2px 18px red;">Merchant of Venice</h1> -->
+                <div class="separator"></div>
+                <h2>by William Shakespeare</h2>
+            </div>
+        </div>
+        <div class="book-content">
+            <h3>An Excerpt from Chapter One</h3>
+
+            <p>Bassanio, a young Venetian of noble rank, wishes to woo the beautiful and wealthy heiress Portia of Belmont. Having squandered his estate, he needs 3,000 ducats to subsidise his expenditures as a suitor. Bassanio approaches his friend Antonio, a wealthy merchant of Venice, who has previously and repeatedly bailed him out. Antonio agrees, but since he is cash-poor – his ships and merchandise are busy at sea to Tripolis, the Indies, Mexico and England – he promises to cover a bond if Bassanio can find a lender, so Bassanio turns to the Jewish moneylender Shylock and names Antonio as the loan's guarantor.</p>
+
+<p>Antonio has already antagonized Shylock through his outspoken antisemitism and because Antonio's habit of lending money without interest forces Shylock to charge lower rates. Shylock is at first reluctant to grant the loan, citing abuse he has suffered at Antonio's hand. He finally agrees to lend the sum to Bassanio without interest upon one condition: if Antonio were unable to repay it at the specified date, Shylock may take a pound of Antonio's flesh. Bassanio does not want Antonio to accept such a risky condition; Antonio is surprised by what he sees as the moneylender's generosity (no "usance" – interest – is asked for), and he signs the contract. With money in hand, Bassanio leaves for Belmont with his friend Gratiano, who has asked to accompany him. Gratiano is a likeable young man, but he is often flippant, overly talkative, and tactless. Bassanio warns his companion to exercise self-control, and the two leave for Belmont.</p>
+
+<p>Meanwhile, in Belmont, Portia is awash with suitors. Her father left a will stipulating that each of her suitors must choose correctly from one of three caskets, made of gold, silver and lead respectively. Whoever picks the right casket wins Portia's hand. The first suitor, the Prince of Morocco, chooses the gold casket, interpreting its slogan, "Who chooseth me shall gain what many men desire", as referring to Portia. The second suitor, the conceited Prince of Aragon, chooses the silver casket, which proclaims, "Who chooseth me shall get as much as he deserves", as he believes he is full of merit. Both suitors leave empty-handed, having rejected the lead casket because of the baseness of its material and the uninviting nature of its slogan, "Who chooseth me must give and hazard all he hath". The last suitor is Bassanio, whom Portia wishes to succeed, having met him before. As Bassanio ponders his choice, members of Portia's household sing a song that says that "fancy" (not true love) is "engend'red in the eyes, / With gazing fed";[2] Bassanio chooses the lead casket and wins Portia's hand.</p>
+            
+        </div>
+    </div>
+</main>
+    </div>
+
+</body>
+<body>
+    <div style="height: 1000px;width: 100%;background-image: url('Images/back.jpg');">
+        <main>
+    <div class="book">
+        <div class="book-cover" style="background-image: url('Images/harry.jpg');background-size: cover;">
+            <div>
+<!--                 <h1>Harry Potter</h1>
+ -->                <div class="separator"></div>
+                <h2>by J.K Rowling</h2>
+            </div>
+        </div>
+        <div class="book-content">
+            <h3>An Excerpt from Chapter One</h3>
+<p>The series follows the life of a boy named Harry Potter. In the first book, Harry Potter and the Philosopher's Stone, Harry lives in a cupboard under the stairs in the house of the Dursleys, his aunt, uncle and cousin, who all treats him poorly. At the age of 11, Harry discovers that he is a wizard. He meets a half-giant named Hagrid who invites him to attend the Hogwarts School of Witchcraft and Wizardry. Harry learns that his parents, Lilly and James Potter, also was magicians, and was murdered by the dark wizard Lord Voldemort when Harry was a baby. When Voldemort attempted to kill Harry, his curse rebounded, seemingly killing Voldemort, and Harry survived with a lightning-shaped scar on his forehead. The event made Harry famous among the community of wizards and witches.</p>
+
+<p>Harry becomes a student at Hogwarts and is sorted into Gryffindor House. He gains the friendship of Ron Weasley, a member of a large but poor wizarding family, and Hermione Granger, a witch of non-magical, or Muggle, parentage. The trio develops an enmity with the rich pure-blood student Draco Malfoy. Harry encounters the school's headmaster, Albus Dumbledore; the potions professor, Severus Snape, who displays a dislike for him; and the Defence Against the Dark Arts teacher, Quirinus Quirrell. Quirrell turns out to be allied with Voldemort, who is still alive as a weak spirit. The first book concludes with Harry's confrontation with Voldemort, who, in his quest to regain a body, yearns to possess the Philosopher's Stone, a substance that bestows everlasting life.</p>
+
+<p>Harry Potter and the Chamber of Secrets describes Harry's second year at Hogwarts. Students are attacked and petrified by an unknown creature; wizards of Muggle parentage are the primary targets. The attacks appear related to the mythical Chamber of Secrets and resembles attacks fifty years earlier. Harry discovers an ability to speak the snake language Parseltongue, which he learns is rare and associated with the Dark Arts. When Hermione is attacked and Ron's younger sister, Ginny Weasley, abducted, Harry and Ron uncover the chamber's secrets and enter it. Harry discovers that Ginny was possessed by an old diary, inside which the memory of Tom Marvolo Riddle, Voldemort's younger self, resides. On Voldemort's behalf, Ginny opened the chamber and unleashed the basilisk, an ancient monster that kills or petrifies those who make direct or indirect eye contact, respectively. With the help of Dumbledore's phoenix, Fawkes, and the Sword of Gryffindor, Harry, slays the basilisk and destroys the diary.</p>
+
+<p>In the third novel, Harry Potter and the Prisoner of Azkaban, Harry learns that he is targeted by Sirius Black, an escaped convict who allegedly assisted in his parents' murder. Dementors, creatures that feed on despair, search for Sirius and guards the school. As Harry struggles with his reaction to the dementors, he reaches out to Remus Lupin, a new professor who teaches him the Patronus charm. On a windy night, Ron is dragged by a black dog into Shrieking Shack, a haunted house, and Harry and Hermione follow. The dog is revealed to be Sirius Black. Lupin enters the shack and explains that Sirius was James Potter's best friend; he was framed by another friend of James, Peter Pettigrew, who hides as Ron's pet rat, Scabbers. As the full moon rises, Lupin transforms into a werewolf and bounds away, and the group chase after him. They are surrounded by dementors, but are saved by a figure resembling James who casts a stag Patronus. This is later revealed to be a future version of Harry, who traveled back in time with Hermione using a device called a Time Turner. The duo help Sirius escape on a Hippogriff, while Pettigrew escapes.</p>
+        </div>
+    </div>
+</main>
+    </div>
+
+</body>
+<body>
+    <div style="height: 1000px;width: 100%;background-image: url('Images/back.jpg');">
+        <main>
+    <div class="book">
+        <div class="book-cover" style="background-image: url('Images/apj.jpg');background-size: cover;">
+            <div>
+                <!-- <h1>Wings of Fire</h1> -->
+                <div class="separator"></div>
+                <h2>by APJ Abdul Kalam</h2>
+            </div>
+        </div>
+        <div class="book-content">
+            <h3>An Excerpt from Chapter One</h3>
+
+          <p> Wings of Fire (1999), is the autobiography of the Missile Man of India and President of India, Dr. A. P. J. Abdul Kalam. It was written by him and Arun Tiwari.</p>
+
+<p>In the autobiography, Kalam examines his early life, effort, hardship, fortitude, luck and chance that eventually led him to lead Indian space research, nuclear and missile programs. Kalam started his career, after graduating from Aerospace engineering at Madras Institute of Technology, at Hindustan Aeronautics Limited and was assigned to build a hovercraft prototype. Later he moved to ISRO and helped establish the Vikram Sarabhai Space Centre and pioneered the first space launch-vehicle program. During the 1990s and early 2000, Kalam moved to the DRDO to lead the Indian nuclear weapons program, with particular successes in thermonuclear weapons development culminating in the operation Smiling Buddha and an ICBM Agni.</p>
+<p>Kalam was born on October 15, 1931, the son of a little educated boat owner in Rameswaram, Tamil Nadu. His father was also imam of the small mosque in Rameswaram. He had an unparalleled career as a defence scientist, culminating in the highest civilian award of India, Bharat Ratna</p>. As chief of the country's defence research and development programmer, Kalam demonstrated a great, great potential for dynamics and innovations that existed in a seemingly moribund research establishment.<p> This is the story of Kalam's own rise from obscurity and his personal and professional struggles, as well as the story of AGNI, TRISHUL, and NAG missiles that have become household names in India and that have raised the nation to the level of a missile power of international reckoning. Since independence, India has sought in various ways, self-realization, adulation, and success.</p>
+        </div>
+    </div>
+</main>
+    </div>
+    <h3 style="text-shadow: 1px 2px 3px darkviolet;">FOR MORE BOOKS <a href="https://openlibrary.org/" target="_blank"><button class="glow-on-hover" type="button">CLICK HERE!</button></a></h3>
+
+</body>
+</html>
